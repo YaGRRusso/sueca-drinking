@@ -23,6 +23,11 @@ module.exports = {
         lg: '1024px',
       },
     },
+    extend: {
+      aspectRatio: {
+        card: '5/7',
+      },
+    },
   },
   plugins: [],
 }

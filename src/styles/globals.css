@@ -4,11 +4,14 @@
 
 @layer components {
   .container-center {
-    display: flex;
-    flex: 1 1 0%;
-    align-items: center;
-    justify-content: center;
-    padding-top: theme('spacing.6');
-    padding-bottom: theme('spacing.6');
+    @apply flex flex-1 items-center justify-center py-6;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .flip {
+    transform: rotateY(180deg);
   }
 }
