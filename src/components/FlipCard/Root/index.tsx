@@ -1,11 +1,18 @@
 import { clsx } from 'clsx'
-import { FC, HTMLAttributes, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-export interface FlipCardRootProps extends HTMLAttributes<HTMLDivElement> {
+import FlipCard, { FlipCardCardProps } from '..'
+
+export interface FlipCardRootProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   defaultFlipped?: boolean
+  children: [
+    React.ReactElement<FlipCardCardProps>,
+    React.ReactElement<FlipCardCardProps>
+  ]
 }
 
-const FlipCardRoot: FC<FlipCardRootProps> = ({
+const FlipCardRoot: React.FC<FlipCardRootProps> = ({
   defaultFlipped,
   children,
   className,
@@ -13,8 +20,25 @@ const FlipCardRoot: FC<FlipCardRootProps> = ({
   ...rest
 }) => {
   const [isFlipped, setIsFlipped] = useState(defaultFlipped)
-  const cardClass =
-    'backface-hidden absolute flex h-full w-full items-center justify-center rounded-xl shadow hover:shadow-lg'
+
+  const validateChildren = (children: React.ReactNode) => {
+    React.Children.forEach(children, (child) => {
+      if (React.isValidElement(child)) {
+        if (
+          child.type !== FlipCard.Card ||
+          !['front', 'back'].includes(child.props.side)
+        ) {
+          throw new Error(
+            'FlipCard.Root only allows "FlipCard.Card" components with "side" prop set to "front" or "back" as children.'
+          )
+        }
+      }
+    })
+  }
+
+  useEffect(() => {
+    validateChildren(children)
+  }, [children])
 
   return (
     <div
