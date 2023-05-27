@@ -8,11 +8,12 @@ import { ArrowsClockwise } from 'phosphor-react'
 import { useEffect, useState } from 'react'
 
 const HomePage: NextPage = ({}) => {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('sueca')
   const [card, setCard] = useState<CardProps>()
+  const [flipped, setFlipped] = useState(false)
 
   const generateCard = () => {
-    const index = Math.ceil(Math.random() * 52)
+    const index = Math.floor(Math.random() * 52)
     setCard(cards[index])
     console.log(cards[index])
   }
@@ -20,11 +21,11 @@ const HomePage: NextPage = ({}) => {
   useEffect(() => generateCard(), [])
 
   return (
-    <div className="container-center container flex flex-col gap-4">
+    <div className="container-center container flex flex-col gap-4 font-xyz">
       <button onClick={generateCard}>
         <ArrowsClockwise />
       </button>
-      <FlipCard.Root>
+      <FlipCard.Root value={flipped} onClick={() => setFlipped(!flipped)}>
         <FlipCard.Card side="front">
           {card && (
             <Image
@@ -39,13 +40,13 @@ const HomePage: NextPage = ({}) => {
         <FlipCard.Card side="back">
           <Image
             alt="card back"
-            src="/images/especial/back1.jpg"
+            src="/images/especial/back2.jpg"
             fill
             sizes="100%"
             priority
           />
-          <h1 className="absolute w-1/2 text-center text-xl font-bold">
-            Escolha 3 pessoas para beber
+          <h1 className="absolute w-1/2 text-center text-7xl font-medium text-gray-300">
+            {t(card?.value.toString() || '')}
           </h1>
         </FlipCard.Card>
       </FlipCard.Root>
@@ -58,7 +59,7 @@ export default HomePage
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale as string, ['common', 'form'])),
+      ...(await serverSideTranslations(locale as string, ['common', 'sueca'])),
     },
   }
 }

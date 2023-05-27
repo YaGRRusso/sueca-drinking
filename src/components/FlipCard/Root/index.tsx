@@ -6,6 +6,7 @@ import FlipCard, { FlipCardCardProps } from '..'
 export interface FlipCardRootProps
   extends React.HTMLAttributes<HTMLDivElement> {
   defaultFlipped?: boolean
+  value?: boolean
   children: [
     React.ReactElement<FlipCardCardProps>,
     React.ReactElement<FlipCardCardProps>
@@ -14,6 +15,7 @@ export interface FlipCardRootProps
 
 const FlipCardRoot: React.FC<FlipCardRootProps> = ({
   defaultFlipped,
+  value,
   children,
   className,
   onClick,

@@ -27,6 +27,9 @@ module.exports = {
       aspectRatio: {
         card: '5/7',
       },
+      fontFamily: {
+        xyz: 'var(--font-xyz)',
+      },
     },
   },
   plugins: [],
