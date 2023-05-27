@@ -1,3 +1,5 @@
 {
-  "hello": "Hello, {{ name }}"
+  "nextCard": "Next Card",
+  "cards": "Cards: {{count}}",
+  "createdBy": "Created by"
 }

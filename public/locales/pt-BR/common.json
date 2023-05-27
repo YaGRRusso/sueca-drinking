@@ -1,3 +1,5 @@
 {
-  "hello": "Olá, {{ name }}"
+  "nextCard": "Próxima Carta",
+  "cards": "Cartas: {{count}}",
+  "createdBy": "Criado por"
 }

@@ -7,11 +7,18 @@
     @apply flex flex-1 items-center justify-center py-6;
   }
 
+  .preserve-3d {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+
   .backface-hidden {
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   .flip {
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
   }
 }
