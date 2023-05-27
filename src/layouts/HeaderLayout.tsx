@@ -20,7 +20,6 @@ const HeaderLayout: NextPage<HeaderLayoutProps> = ({ children }) => {
       case 'en-US':
         return 'pt-BR'
     }
-    console.log(router.locale)
   }, [router])
 
   const currentTheme = useMemo(() => {
