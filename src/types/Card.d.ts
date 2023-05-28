@@ -64,7 +64,7 @@ type CardCodeProps =
   | CardHeartCodeProps
   | CardSpadeCodeProps
 
-type CardSuitProps = 'heart' | 'spades' | 'diamond' | 'club'
+type CardSuitProps = 'heart' | 'spade' | 'diamond' | 'club'
 
 interface CardProps {
   code: CardCodeProps

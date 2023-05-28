@@ -4,7 +4,15 @@ import clsx from 'clsx'
 import { GetStaticProps, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { ArrowClockwise, BeerBottle, CaretRight } from 'phosphor-react'
+import {
+  ArrowClockwise,
+  BeerBottle,
+  CaretRight,
+  Club,
+  Diamond,
+  Heart,
+  Spade,
+} from 'phosphor-react'
 import { useCallback, useState } from 'react'
 
 const HomePage: NextPage = ({}) => {
@@ -38,8 +46,18 @@ const HomePage: NextPage = ({}) => {
         onClick={() => setFlipped(!flipped)}
         className="flex aspect-card w-full max-w-sm items-center justify-center"
       >
-        <div className="flex h-full w-full items-center justify-center rounded-3xl border-2 bg-rose-500 p-12 text-5xl dark:bg-rose-700">
-          {card ? card.code : <BeerBottle />}
+        <div className="flex h-full w-full items-center justify-center rounded-3xl border-2 bg-rose-500 p-12 text-5xl font-bold dark:bg-rose-700">
+          {card ? (
+            <div className="flex flex-col items-center gap-4">
+              {card.suit === 'club' && <Club />}
+              {card.suit === 'diamond' && <Diamond />}
+              {card.suit === 'heart' && <Heart />}
+              {card.suit === 'spade' && <Spade />}
+              <span>{card.value}</span>
+            </div>
+          ) : (
+            <BeerBottle />
+          )}
         </div>
         <div className="flex h-full w-full items-center justify-center rounded-3xl border-2 bg-sky-500 p-12 text-5xl dark:bg-sky-700">
           {tRules(card?.value.toString() || 'Drink')}
@@ -47,14 +65,15 @@ const HomePage: NextPage = ({}) => {
       </Flip>
       <div className="mt-4 flex items-stretch gap-4">
         <button
-          className="flex items-center justify-center gap-2 rounded-3xl bg-gray-200 px-4 py-2 text-xl font-semibold transition-colors hover:bg-gray-300 dark:bg-slate-800 dark:hover:bg-slate-700"
+          className="flex items-center justify-center gap-2 rounded-3xl bg-gray-200 px-4 py-2 text-xl font-semibold transition-colors hover:bg-gray-300 disabled:pointer-events-none disabled:opacity-40 dark:bg-slate-800 dark:hover:bg-slate-700"
+          disabled={flipped}
           onClick={handleResetDeck}
         >
           <ArrowClockwise />
         </button>
         <button
           className="flex items-center justify-center gap-2 rounded-3xl bg-gray-200 px-8 py-2 text-xl font-semibold transition-colors hover:bg-gray-300 disabled:pointer-events-none disabled:opacity-40 dark:bg-slate-800 dark:hover:bg-slate-700"
-          disabled={deck.length === 0}
+          disabled={flipped || deck.length === 0}
           onClick={handleGetLastCard}
         >
           {tCommon('nextCard')}
