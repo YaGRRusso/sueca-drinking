@@ -1,4 +1,5 @@
 import { clsx } from 'clsx'
+import { useTranslation } from 'next-i18next'
 import { FC, HTMLAttributes, useMemo } from 'react'
 
 export interface CardBackProps extends HTMLAttributes<HTMLDivElement> {
@@ -11,13 +12,15 @@ const CardBack: FC<CardBackProps> = ({
   className,
   ...rest
 }) => {
+  const { t: tRules } = useTranslation('sueca')
+
   const cardRule = useMemo(() => {
     if (rule) {
       return rule
     } else {
-      return 'Drink'
+      return tRules('info')
     }
-  }, [rule])
+  }, [rule, tRules])
 
   return (
     <div
