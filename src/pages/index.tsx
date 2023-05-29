@@ -1,4 +1,4 @@
-import { Flip } from '@/components'
+import { Button, Flip } from '@/components'
 import { useDeckContext } from '@/contexts/DeckContext'
 import clsx from 'clsx'
 import { GetStaticProps, NextPage } from 'next'
@@ -63,22 +63,17 @@ const HomePage: NextPage = ({}) => {
           {tRules(card?.value.toString() || 'Drink')}
         </div>
       </Flip>
-      <div className="mt-4 flex items-stretch gap-4">
-        <button
-          className="flex items-center justify-center gap-2 rounded-3xl bg-gray-200 px-4 py-2 text-xl font-semibold transition-colors hover:bg-gray-300 disabled:pointer-events-none disabled:opacity-40 dark:bg-slate-800 dark:hover:bg-slate-700"
-          disabled={flipped}
-          onClick={handleResetDeck}
-        >
+      <div className="mt-4 flex items-center gap-4">
+        <Button disabled={flipped} onClick={handleResetDeck} padding="sm">
           <ArrowClockwise />
-        </button>
-        <button
-          className="flex items-center justify-center gap-2 rounded-3xl bg-gray-200 px-8 py-2 text-xl font-semibold transition-colors hover:bg-gray-300 disabled:pointer-events-none disabled:opacity-40 dark:bg-slate-800 dark:hover:bg-slate-700"
+        </Button>
+        <Button
           disabled={flipped || deck.length === 0}
           onClick={handleGetLastCard}
         >
           {tCommon('nextCard')}
           <CaretRight />
-        </button>
+        </Button>
       </div>
     </div>
   )

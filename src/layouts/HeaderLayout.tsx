@@ -1,4 +1,4 @@
-import { ErrorBoundary } from '@/components'
+import { Button, ErrorBoundary } from '@/components'
 import { useThemeContext } from '@/contexts/ThemeContext'
 import clsx from 'clsx'
 import { NextPage } from 'next'
@@ -39,29 +39,25 @@ const HeaderLayout: NextPage<HeaderLayoutProps> = ({ children }) => {
           Sueca
         </Link>
         <div className="flex items-center gap-4 text-xl">
-          <button onClick={toggleTheme} className="rounded-lg p-2 hover:shadow">
+          <Button onClick={toggleTheme} variant="light">
             {theme === 'dark' ? <MoonStars /> : <Sun />}
-          </button>
-          <Link
-            href=""
-            locale={nextLang}
-            className="rounded-lg p-2 hover:shadow"
-          >
-            <Translate />
-          </Link>
-          <Link
-            href="https://github.com/YaGRRusso"
-            target="_blank"
-            className="rounded-lg p-2 hover:shadow"
-          >
-            <GithubLogo />
-          </Link>
+          </Button>
+          <Button asChild variant="light">
+            <Link href="" locale={nextLang}>
+              <Translate />
+            </Link>
+          </Button>
+          <Button asChild variant="light">
+            <Link href="https://github.com/YaGRRusso" target="_blank">
+              <GithubLogo />
+            </Link>
+          </Button>
         </div>
       </header>
       <ErrorBoundary>
         <>{children}</>
       </ErrorBoundary>
-      <footer className="container flex items-center justify-center gap-1 py-2 text-sm opacity-40">
+      <footer className="container flex items-center justify-center gap-1 pb-4 pt-6 text-sm opacity-40">
         {tCommon('createdBy')}
         <Link
           href="https://github.com/YaGRRusso"

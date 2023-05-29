@@ -3,3 +3,6 @@ export { default as Head } from './Head'
 
 export type { FlipProps } from './Flip'
 export { default as Flip } from './Flip'
+
+export type { ButtonProps } from './Button'
+export { default as Button } from './Button'
