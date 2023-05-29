@@ -4,20 +4,26 @@ import { HeaderLayout } from '@/layouts'
 import '@/styles/globals.css'
 import { appWithTranslation } from 'next-i18next'
 import type { AppProps } from 'next/app'
-import { Amatic_SC as font } from 'next/font/google'
+import { Amatic_SC } from 'next/font/google'
 
-// import { Reenie_Beanie as font } from 'next/font/google'
+// import { Reenie_Beanie } from 'next/font/google'
 
-const xyz = font({
+const amatic = Amatic_SC({
   weight: '400',
   subsets: ['latin'],
-  variable: '--font-xyz',
+  variable: '--font-amatic',
 })
+
+// const reenie = Reenie_Beanie({
+//   weight: '400',
+//   subsets: ['latin'],
+//   variable: '--font-reenie',
+// })
 
 function App({ Component, pageProps }: AppProps) {
   return (
     <AppProvider>
-      <main className={xyz.variable}>
+      <main className={amatic.variable}>
         <HeaderLayout>
           <Head title="Next App" />
           <Component {...pageProps} />

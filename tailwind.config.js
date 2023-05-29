@@ -28,7 +28,8 @@ module.exports = {
         card: '5/7',
       },
       fontFamily: {
-        xyz: 'var(--font-xyz)',
+        amatic: 'var(--font-amatic)',
+        // reenie: 'var(--font-reenie)',
       },
     },
   },
