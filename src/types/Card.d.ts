@@ -64,10 +64,12 @@ type CardCodeProps =
   | CardHeartCodeProps
   | CardSpadeCodeProps
 
+type CardValueProps = number
+
 type CardSuitProps = 'heart' | 'spade' | 'diamond' | 'club'
 
 interface CardProps {
   code: CardCodeProps
-  value: number
+  value: CardValueProps
   suit: CardSuitProps
 }

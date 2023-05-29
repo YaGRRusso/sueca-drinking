@@ -1,11 +1,11 @@
 import { Button, ErrorBoundary } from '@/components'
 import { useThemeContext } from '@/contexts/ThemeContext'
+import { GithubLogo, MoonStars, Sun, Translate } from '@phosphor-icons/react'
 import clsx from 'clsx'
 import { NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { GithubLogo, MoonStars, Sun, Translate } from 'phosphor-react'
 import { HTMLAttributes, useMemo } from 'react'
 
 export interface HeaderLayoutProps extends HTMLAttributes<HTMLDivElement> {}
