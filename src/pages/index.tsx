@@ -12,7 +12,7 @@ const HomePage: NextPage = ({}) => {
   const { t: tRules } = useTranslation('sueca')
   const { deck, getLastDeckCard, resetDeck } = useDeckContext()
   const [card, setCard] = useState<CardProps>()
-  const [flipped, setFlipped] = useState(false)
+  const [flipped, setFlipped] = useState<boolean>()
   const [swipeStart, setSwipeStart] = useState<number>()
   const [swipeEnd, setSwipeEnd] = useState<number>()
   const [swipeDirection, setSwipeDirection] = useState<'left' | 'right'>()
@@ -74,15 +74,17 @@ const HomePage: NextPage = ({}) => {
   }, [handleGetLastCard, swipeEnd, swipeStart])
 
   return (
-    <div className="container-center container flex flex-col gap-4 font-amatic">
+    <div className="container-center container flex flex-col gap-4 overflow-x-hidden font-amatic">
       <span
         className={clsx(
           'flex items-center justify-center gap-2 text-xl',
           deck.length === 0 && 'text-red-500'
         )}
-        onClick={() => console.log(deck)}
       >
-        {tCommon('cards', { count: deck.length })}
+        <span>{tCommon('cards', { count: deck.length })}</span>
+        {/* <Button variant="light" onClick={() => console.log(deck)}>
+          <Eye weight="thin" />
+        </Button> */}
       </span>
       <Flip
         className={clsx(
@@ -100,7 +102,7 @@ const HomePage: NextPage = ({}) => {
         <Card.Back rule={tRules(card?.value.toString() || '')} />
       </Flip>
       <div className="mt-4 flex items-center gap-4">
-        <Button disabled={flipped} onClick={handleResetDeck} padding="sm">
+        <Button disabled={flipped} onClick={handleResetDeck} size="sm">
           <ArrowClockwise />
         </Button>
         <Button

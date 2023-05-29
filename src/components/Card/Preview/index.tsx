@@ -2,12 +2,12 @@ import { BeerBottle, Club, Diamond, Heart, Spade } from '@phosphor-icons/react'
 import { clsx } from 'clsx'
 import { FC, HTMLAttributes, useMemo } from 'react'
 
-export interface CardFrontProps extends HTMLAttributes<HTMLDivElement> {
+export interface CardPreviewProps extends HTMLAttributes<HTMLDivElement> {
   suit?: CardSuitProps
   value?: CardValueProps
 }
 
-const CardFront: FC<CardFrontProps> = ({
+const CardPreview: FC<CardPreviewProps> = ({
   suit,
   value,
   children,
@@ -32,7 +32,7 @@ const CardFront: FC<CardFrontProps> = ({
   return (
     <div
       className={clsx(
-        'flex aspect-card h-full w-full flex-col items-center justify-center gap-4 rounded-3xl border-2 bg-rose-500 p-12 text-5xl font-bold dark:bg-rose-700',
+        'flex aspect-card flex-col items-center justify-center gap-2 rounded-lg border bg-rose-500 p-2 text-xl font-bold dark:bg-rose-700',
         className
       )}
       {...rest}
@@ -43,4 +43,4 @@ const CardFront: FC<CardFrontProps> = ({
   )
 }
 
-export default CardFront
+export default CardPreview

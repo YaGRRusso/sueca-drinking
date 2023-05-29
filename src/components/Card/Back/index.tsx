@@ -25,7 +25,7 @@ const CardBack: FC<CardBackProps> = ({
   return (
     <div
       className={clsx(
-        'flex h-full w-full items-center justify-center rounded-3xl border-2 bg-sky-500 p-12 text-5xl dark:bg-sky-700',
+        'flex aspect-card h-full w-full items-center justify-center rounded-3xl border-2 bg-sky-500 p-12 text-5xl dark:bg-sky-700',
         className
       )}
       {...rest}
