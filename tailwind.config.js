@@ -31,6 +31,15 @@ module.exports = {
         amatic: 'var(--font-amatic)',
         // reenie: 'var(--font-reenie)',
       },
+      keyframes: {
+        popup: {
+          from: { transform: 'translate(-50%, -80%) scale(0)' },
+          to: { transform: 'translate(-50%, -50%) scale(1)' },
+        },
+      },
+      animation: {
+        popup: 'popup 300ms ease-out',
+      },
     },
   },
   plugins: [],

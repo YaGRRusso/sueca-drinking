@@ -3,7 +3,6 @@ import { useThemeContext } from '@/contexts/ThemeContext'
 import { GithubLogo, MoonStars, Sun, Translate } from '@phosphor-icons/react'
 import clsx from 'clsx'
 import { NextPage } from 'next'
-import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { HTMLAttributes, useMemo } from 'react'
@@ -12,7 +11,6 @@ export interface HeaderLayoutProps extends HTMLAttributes<HTMLDivElement> {}
 
 const HeaderLayout: NextPage<HeaderLayoutProps> = ({ children }) => {
   const { theme, toggleTheme } = useThemeContext()
-  const { t: tCommon } = useTranslation('common')
   const router = useRouter()
 
   const nextLang = useMemo(() => {
@@ -59,7 +57,7 @@ const HeaderLayout: NextPage<HeaderLayoutProps> = ({ children }) => {
       <ErrorBoundary>
         <>{children}</>
       </ErrorBoundary>
-      <footer className="container flex items-center justify-center gap-1 pb-4 pt-6 text-sm opacity-40">
+      {/* <footer className="container flex items-center justify-center gap-1 pb-4 pt-6 text-sm opacity-40">
         {tCommon('createdBy')}
         <Link
           href="https://github.com/YaGRRusso"
@@ -68,7 +66,7 @@ const HeaderLayout: NextPage<HeaderLayoutProps> = ({ children }) => {
         >
           Yago Russo
         </Link>
-      </footer>
+      </footer> */}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import { Button, Card, Flip, Modal } from '@/components'
 import { useDeckContext } from '@/contexts/DeckContext'
-import { ArrowClockwise, CaretRight, Eye } from '@phosphor-icons/react'
+import { ArrowClockwise, CaretRight, Eye, Stack } from '@phosphor-icons/react'
 import clsx from 'clsx'
 import { GetStaticProps, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
@@ -61,7 +61,7 @@ const HomePage: NextPage = ({}) => {
             <Eye weight="thin" size={16} />
           </Button>
         </Modal.Trigger>
-        <Modal.Content>
+        <Modal.Content title="Deck" icon={<Stack />}>
           <div className="grid grid-cols-[repeat(auto-fit,_minmax(100px,_1fr))] gap-2">
             {deck.map((item) => (
               <Card.Preview
