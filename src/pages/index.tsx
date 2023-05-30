@@ -1,6 +1,6 @@
-import { Button, Card, Flip } from '@/components'
+import { Button, Card, Flip, Modal } from '@/components'
 import { useDeckContext } from '@/contexts/DeckContext'
-import { ArrowClockwise, CaretRight } from '@phosphor-icons/react'
+import { ArrowClockwise, CaretRight, Eye } from '@phosphor-icons/react'
 import clsx from 'clsx'
 import { GetStaticProps, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
@@ -54,17 +54,25 @@ const HomePage: NextPage = ({}) => {
 
   return (
     <div className="container-center container flex flex-col gap-4 overflow-x-hidden font-amatic">
-      <span
-        className={clsx(
-          'flex items-center justify-center gap-2 text-xl',
-          deck.length === 0 && 'text-red-500'
-        )}
-      >
-        <span>{tCommon('cards', { count: deck.length })}</span>
-        {/* <Button variant="light" onClick={() => console.log(deck)}>
-          <Eye weight="thin" />
-        </Button> */}
-      </span>
+      <Modal.Root>
+        <Modal.Trigger>
+          <Button variant="light" className="font-thin">
+            <span>{tCommon('cards', { count: deck.length })}</span>
+            <Eye weight="thin" size={16} />
+          </Button>
+        </Modal.Trigger>
+        <Modal.Content>
+          <div className="grid grid-cols-[repeat(auto-fit,_minmax(100px,_1fr))] gap-2">
+            {deck.map((item) => (
+              <Card.Preview
+                key={item.code}
+                suit={item.suit}
+                value={item.value}
+              />
+            ))}
+          </div>
+        </Modal.Content>
+      </Modal.Root>
       <Flip
         className={clsx(
           'flex aspect-card w-full max-w-sm items-center justify-center',

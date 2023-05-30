@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot'
 import { clsx } from 'clsx'
-import { ButtonHTMLAttributes, FC } from 'react'
+import { ButtonHTMLAttributes, forwardRef } from 'react'
 
 const sizeVariants = {
   sm: 'px-4',
@@ -19,29 +19,29 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: keyof typeof variantVariants
 }
 
-const Button: FC<ButtonProps> = ({
-  size = 'md',
-  variant = 'default',
-  asChild,
-  children,
-  className,
-  ...rest
-}) => {
-  const Comp = asChild ? Slot : 'button'
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    { size = 'md', variant = 'default', asChild, children, className, ...rest },
+    forwardedRef
+  ) => {
+    const Comp = asChild ? Slot : 'button'
 
-  return (
-    <Comp
-      className={clsx(
-        'flex items-center justify-center gap-2 rounded-3xl text-xl font-semibold transition-colors disabled:pointer-events-none disabled:opacity-40',
-        variant !== 'light' && sizeVariants[size],
-        variantVariants[variant],
-        className
-      )}
-      {...rest}
-    >
-      {children}
-    </Comp>
-  )
-}
+    return (
+      <Comp
+        className={clsx(
+          'flex items-center justify-center gap-2 rounded-3xl text-xl font-semibold transition-colors disabled:pointer-events-none disabled:opacity-40',
+          variant !== 'light' && sizeVariants[size],
+          variantVariants[variant],
+          className
+        )}
+        ref={forwardedRef}
+        {...rest}
+      >
+        {children}
+      </Comp>
+    )
+  }
+)
 
+Button.displayName = 'Button'
 export default Button

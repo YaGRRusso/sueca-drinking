@@ -25,7 +25,9 @@ const HeaderLayout: NextPage<HeaderLayoutProps> = ({ children }) => {
   }, [router])
 
   const currentTheme = useMemo(() => {
-    return theme === 'dark' ? 'dark bg-slate-900 text-slate-100' : ''
+    return theme === 'dark'
+      ? 'dark bg-slate-900 text-slate-100'
+      : 'bg-white text-black'
   }, [theme])
 
   return (

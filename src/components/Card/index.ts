@@ -2,9 +2,9 @@ import CardBack from './Back'
 import CardFront from './Front'
 import CardPreview from './Preview'
 
-export type { CardFrontProps } from './Front'
-export type { CardBackProps } from './Back'
-export type { CardPreviewProps } from './Preview'
+export type * from './Front'
+export type * from './Back'
+export type * from './Preview'
 
 const Card = {
   Front: CardFront,

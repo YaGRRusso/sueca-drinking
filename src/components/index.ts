@@ -9,3 +9,6 @@ export { default as Button } from './Button'
 
 export type * from './Card'
 export { default as Card } from './Card'
+
+export type * from './Modal'
+export { default as Modal } from './Modal'
