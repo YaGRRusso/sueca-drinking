@@ -9,7 +9,6 @@ import { TouchEvent, useCallback, useMemo, useState } from 'react'
 
 const HomePage: NextPage = ({}) => {
   const { t: tCommon } = useTranslation('common')
-  const { t: tRules } = useTranslation('sueca')
   const { deck, getLastDeckCard, resetDeck, isDeckEmpty } = useDeckContext()
   const [card, setCard] = useState<CardProps>()
   const [flipped, setFlipped] = useState<boolean>()
@@ -61,16 +60,14 @@ const HomePage: NextPage = ({}) => {
             <Eye weight="thin" size={16} />
           </Button>
         </Modal.Trigger>
-        <Modal.Content title="Deck" icon={<Stack />}>
-          <div className="grid grid-cols-[repeat(auto-fit,_minmax(100px,_1fr))] gap-2">
-            {deck.map((item) => (
-              <Card.Preview
-                key={item.code}
-                suit={item.suit}
-                value={item.value}
-              />
-            ))}
-          </div>
+        <Modal.Content
+          className="grid grid-cols-[repeat(auto-fit,_minmax(100px,_1fr))] gap-2"
+          title="Deck"
+          icon={<Stack />}
+        >
+          {deck.map((item) => (
+            <Card.Preview key={item.code} suit={item.suit} value={item.value} />
+          ))}
         </Modal.Content>
       </Modal.Root>
       <Flip
@@ -86,7 +83,7 @@ const HomePage: NextPage = ({}) => {
         onTouchEnd={handleSwipe}
       >
         <Card.Front value={card?.value} suit={card?.suit} />
-        <Card.Back rule={tRules(card?.value.toString() || '')} />
+        <Card.Back value={card?.value} />
       </Flip>
       <div className="mt-4 flex items-center gap-4">
         <Button disabled={flipped} onClick={handleResetDeck} size="sm">

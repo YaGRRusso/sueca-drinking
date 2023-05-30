@@ -1,16 +1,42 @@
 {
   "info": "Clique ou Arraste",
+
   "0": "Escolha 1 pessoa para beber",
-  "1": "Escolha 2 pessoa para beber",
-  "2": "Escolha 3 pessoa para beber",
+  "0info": "Escolha 1 pessoa para beber 1 dose",
+
+  "1": "Meio a Meio",
+  "1info": "Sirva uma dose na quantidade que quiser e escolha alguém para beber metade, a outra metade é sua.",
+
+  "2": "Escolha 3 pessoas para beber",
+  "2info": "Escolha 3 pessoa para beber 1 dose ou 1 pessoa para beber as 3 doses sozinho",
+
   "3": "Continência",
+  "3info": "Escolha algum sinal que poderá ser feito em qualquer momento do jogo, o último a fazer o sinal bebe.",
+
   "4": "Conto",
+  "4info": "Inicie uma história, os outros jogadores devem continuar a história contando-a novamente e adicionando algo no final para o próximo continuar.",
+
   "5": "Palavra Proibida",
+  "5info": "Escolha uma palavra que não poderá ser dita por ninguém, exceto por você, quem falar essa palavra deve beber, a regra continua valendo até chegar em você novamente ou outro jogador tirar a mesma carta e substituir a regra atual. (A regra continua valendo para quem já bebeu)",
+
   "6": "PI",
+  "6info": "Comece uma contagem a partir do número 1, os outros jogadores devem seguir a ordem e trocar os múltiplos de 7 pela palavra PI. (Quem falar 7, 14, 21, 28... deve beber)",
+
   "7": "Regra Geral",
+  "7info": "Solte a criatividade e crie uma regra geral, quem não respeitar a regra deve beber, a regra continua valendo até chegar em você novamente ou outro jogador tirar a mesma carta e substituir a regra atual. (A regra continua valendo para quem já bebeu)",
+
   "8": "Stop",
+  "8info": "Fale uma palavra qualquer, os próximos jogadores devem continuar falando palavras que comecem com a mesma letra.",
+
   "9": "Cafofo",
+  "9info": "Fale uma palavra qualquer, os jogadores devem continuar a ordem falando palavras que tenham algo em comum com a última palavra dita. (O sentido das palavras irão mudar as longo das respostas)",
+
   "10": "Todos Bebem",
-  "11": "Mulheres Bebem",
-  "12": "Homens Bebem"
+  "10info": "Todas na mesa devem beber uma dose.",
+
+  "11": "Todas as Mulheres Bebem",
+  "11info": "Todas as mulheres na mesa devem beber uma dose.",
+
+  "12": "Todos os Homens Bebem",
+  "12info": "Todas as mulheres na mesa devem beber uma dose."
 }

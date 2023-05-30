@@ -1,16 +1,42 @@
 {
-  "info": "Click or Swipe",
+  "info": "Click or Drag",
+
   "0": "Choose 1 person to drink",
-  "1": "Choose 2 people to drink",
+  "0info": "Choose 1 person to drink 1 shot",
+
+  "1": "Half and Half",
+  "1info": "Pour a shot in any amount you want and choose someone to drink half of it, the other half is yours.",
+
   "2": "Choose 3 people to drink",
-  "3": "Continence",
-  "4": "Tale",
-  "5": "Forbidden Words",
+  "2info": "Choose 3 people to drink 1 shot each or 1 person to drink all 3 shots alone",
+
+  "3": "Salute",
+  "3info": "Choose a signal that can be made at any moment during the game, the last person to make the signal drinks.",
+
+  "4": "Story",
+  "4info": "Start a story, the other players must continue the story by retelling it and adding something at the end for the next person to continue.",
+
+  "5": "Forbidden Word",
+  "5info": "Choose a word that no one can say except for you, whoever says that word must drink. The rule remains in effect until it comes back to you or another player draws the same card and replaces the current rule. (The rule applies to those who have already drunk)",
+
   "6": "PI",
+  "6info": "Start counting from the number 1, the other players must follow the order and replace multiples of 7 with the word PI. (Whoever says 7, 14, 21, 28... must drink)",
+
   "7": "General Rule",
+  "7info": "Let your creativity flow and create a general rule, anyone who breaks the rule must drink. The rule remains in effect until it comes back to you or another player draws the same card and replaces the current rule. (The rule applies to those who have already drunk)",
+
   "8": "Stop",
+  "8info": "Say any word, the next players must continue by saying words that start with the same letter.",
+
   "9": "Homely",
-  "10": "Everybody Drink",
-  "11": "Girls Drink",
-  "12": "Boys Drink"
+  "9info": "Say any word, the players must continue in order by saying words that have something in common with the last word spoken. (The meaning of words will change as the answers progress)",
+
+  "10": "Everyone Drinks",
+  "10info": "Everyone at the table must drink one shot.",
+
+  "11": "All Women Drink",
+  "11info": "All women at the table must drink one shot.",
+
+  "12": "All Men Drink",
+  "12info": "All men at the table must drink one shot."
 }
