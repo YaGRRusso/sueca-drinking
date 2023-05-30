@@ -11,7 +11,7 @@ const Flip: FC<FlipProps> = ({ isFlipped, children, className, ...rest }) => {
   return (
     <button
       className={clsx(
-        'preserve-3d relative cursor-pointer select-none transition-all duration-500',
+        'preserve-3d relative cursor-pointer select-none transition-all duration-300',
         isFlipped && 'flip',
         className
       )}

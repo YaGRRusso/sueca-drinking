@@ -6,11 +6,13 @@ import {
   createContext,
   useCallback,
   useContext,
+  useMemo,
   useState,
 } from 'react'
 
 export interface DeckContextProps {
   deck: CardProps[]
+  isDeckEmpty: boolean
   shuffleDeck: () => void
   resetDeck: () => void
   getLastDeckCard: () => CardProps | undefined
@@ -47,6 +49,8 @@ export const DeckProvider: FC<{ children: ReactNode }> = ({ children }) => {
     return card
   }, [deck])
 
+  const isDeckEmpty = useMemo(() => (deck.length <= 0 ? true : false), [deck])
+
   return (
     <DeckContext.Provider
       value={{
@@ -55,6 +59,7 @@ export const DeckProvider: FC<{ children: ReactNode }> = ({ children }) => {
         resetDeck,
         shuffleDeck,
         deck,
+        isDeckEmpty,
       }}
     >
       {children}
