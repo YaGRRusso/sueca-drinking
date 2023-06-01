@@ -66,21 +66,21 @@ export const cards: CardProps[] = [
   ...clubCardCodes.map((item, index) => ({
     code: item,
     suit: 'club' as CardSuitProps,
-    value: index,
+    value: index + 1,
   })),
   ...diamondCardCodes.map((item, index) => ({
     code: item,
     suit: 'diamond' as CardSuitProps,
-    value: index,
+    value: index + 1,
   })),
   ...heartCardCodes.map((item, index) => ({
     code: item,
     suit: 'heart' as CardSuitProps,
-    value: index,
+    value: index + 1,
   })),
   ...spadeCardCodes.map((item, index) => ({
     code: item,
     suit: 'spade' as CardSuitProps,
-    value: index,
+    value: index + 1,
   })),
 ]

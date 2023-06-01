@@ -23,15 +23,14 @@ const Content: FC<ContentProps> = ({
         className="fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] overflow-hidden shadow-xl focus:outline-none data-[state=open]:animate-popup"
         {...rest}
       >
-        <Dialog.Title>{title}</Dialog.Title>
         <div className="flex w-[90vw] max-w-[768px] flex-col rounded-lg bg-gray-900 text-gray-100 shadow-xl">
           <div className="flex items-center justify-between border-b p-8 text-3xl font-semibold">
             <span className="flex items-center gap-2">
               {icon}
-              {title}
+              <Dialog.Title>{title}</Dialog.Title>
             </span>
             <Dialog.Close asChild>
-              <Button variant="light">
+              <Button onClick={(ev) => ev.stopPropagation()} variant="light">
                 <X />
               </Button>
             </Dialog.Close>
