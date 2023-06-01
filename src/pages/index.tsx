@@ -1,6 +1,6 @@
-import { Button, Card, Flip, Modal } from '@/components'
+import { Button, Card, Flip } from '@/components'
 import { useDeckContext } from '@/contexts/DeckContext'
-import { ArrowClockwise, CaretRight, Eye, Stack } from '@phosphor-icons/react'
+import { ArrowClockwise, CaretRight } from '@phosphor-icons/react'
 import clsx from 'clsx'
 import { GetStaticProps, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
@@ -53,7 +53,7 @@ const HomePage: NextPage = ({}) => {
 
   return (
     <div className="container-center container flex flex-col gap-4 overflow-x-hidden font-amatic">
-      <Modal.Root>
+      {/* <Modal.Root>
         <Modal.Trigger>
           <Button variant="light" className="font-thin">
             <span>{tCommon('cards', { count: deck.length })}</span>
@@ -69,7 +69,8 @@ const HomePage: NextPage = ({}) => {
             <Card.Preview key={item.code} suit={item.suit} value={item.value} />
           ))}
         </Modal.Content>
-      </Modal.Root>
+      </Modal.Root> */}
+      <span>{tCommon('cards', { count: deck.length })}</span>
       <Flip
         className={clsx(
           'flex aspect-card w-full max-w-sm items-center justify-center',
