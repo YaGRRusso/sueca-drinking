@@ -30,7 +30,7 @@ const CardBack: FC<CardBackProps> = ({
   return (
     <div
       className={clsx(
-        'relative flex aspect-card h-full w-full items-center justify-center rounded-3xl border-2 bg-sky-500 p-12 text-5xl dark:bg-sky-700',
+        'relative flex aspect-card h-full w-full items-center justify-center rounded-3xl border-2 bg-sky-500 p-12 text-5xl text-white dark:bg-sky-700',
         className
       )}
       {...rest}
@@ -39,7 +39,7 @@ const CardBack: FC<CardBackProps> = ({
         <Modal.Root>
           <Modal.Trigger>
             <div
-              className="absolute right-0 top-0 p-2"
+              className="absolute right-4 top-4 rounded-full p-4 transition-colors hover:bg-sky-600"
               role="button"
               onClick={(ev) => ev.stopPropagation()}
             >

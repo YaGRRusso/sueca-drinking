@@ -29,7 +29,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         className={clsx(
-          'flex items-center justify-center gap-2 rounded-3xl text-xl font-semibold transition-colors disabled:pointer-events-none disabled:opacity-40',
+          'flex items-center justify-center gap-2 rounded-3xl text-xl font-semibold transition-all disabled:pointer-events-none disabled:opacity-40',
           variant !== 'light' && sizeVariants[size],
           variantVariants[variant],
           className

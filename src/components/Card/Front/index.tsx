@@ -1,4 +1,13 @@
-import { BeerBottle, Club, Diamond, Heart, Spade } from '@phosphor-icons/react'
+import {
+  BeerBottle,
+  Club,
+  Crown,
+  CrownSimple,
+  Diamond,
+  Heart,
+  Shield,
+  Spade,
+} from '@phosphor-icons/react'
 import { clsx } from 'clsx'
 import { FC, HTMLAttributes, useMemo } from 'react'
 
@@ -14,7 +23,18 @@ const CardFront: FC<CardFrontProps> = ({
   className,
   ...rest
 }) => {
-  const cardIcon = useMemo(() => {
+  const cardValueIcon = useMemo(() => {
+    switch (value) {
+      case 11:
+        return <Shield weight="fill" />
+      case 12:
+        return <CrownSimple weight="fill" />
+      case 13:
+        return <Crown weight="fill" />
+    }
+  }, [value])
+
+  const cardSuitIcon = useMemo(() => {
     switch (suit) {
       case 'club':
         return <Club weight="fill" />
@@ -32,13 +52,22 @@ const CardFront: FC<CardFrontProps> = ({
   return (
     <div
       className={clsx(
-        'flex aspect-card h-full w-full flex-col items-center justify-center gap-4 rounded-3xl border-2 bg-rose-500 p-12 text-5xl font-bold dark:bg-rose-700',
+        'flex aspect-card h-full w-full flex-col items-center justify-between gap-4 rounded-3xl border-2 bg-rose-500 p-8 text-5xl font-bold text-white dark:bg-rose-700',
         className
       )}
       {...rest}
     >
-      {value && <span>{value}</span>}
-      {cardIcon}
+      <div className="flex w-full items-center justify-between">
+        <span>{value}</span>
+        <span>{cardSuitIcon}</span>
+      </div>
+      <div className="[&>svg]:h-40 [&>svg]:w-40 [&>svg]:xs:h-32 [&>svg]:xs:w-32">
+        {cardValueIcon || cardSuitIcon}
+      </div>
+      <div className="flex w-full rotate-180 items-center justify-between">
+        <span>{value}</span>
+        <span>{cardSuitIcon}</span>
+      </div>
     </div>
   )
 }
