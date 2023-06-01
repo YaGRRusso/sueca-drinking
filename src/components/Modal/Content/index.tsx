@@ -24,7 +24,7 @@ const Content: FC<ContentProps> = ({
         {...rest}
       >
         <div className="flex w-[90vw] max-w-[768px] flex-col rounded-lg bg-gray-900 text-gray-100 shadow-xl">
-          <div className="flex items-center justify-between border-b p-8 text-3xl font-semibold">
+          <div className="flex items-center justify-between gap-8 border-b p-8 text-3xl font-semibold xs:text-xl">
             <span className="flex items-center gap-2">
               {icon}
               <Dialog.Title>{title}</Dialog.Title>

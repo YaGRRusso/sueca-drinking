@@ -5,6 +5,7 @@ import {
   CrownSimple,
   Diamond,
   Heart,
+  IconContext,
   Shield,
   Spade,
 } from '@phosphor-icons/react'
@@ -26,26 +27,24 @@ const CardFront: FC<CardFrontProps> = ({
   const cardValueIcon = useMemo(() => {
     switch (value) {
       case 11:
-        return <Shield weight="fill" />
+        return <Shield />
       case 12:
-        return <CrownSimple weight="fill" />
+        return <CrownSimple />
       case 13:
-        return <Crown weight="fill" />
+        return <Crown />
     }
   }, [value])
 
   const cardSuitIcon = useMemo(() => {
     switch (suit) {
       case 'club':
-        return <Club weight="fill" />
+        return <Club />
       case 'diamond':
-        return <Diamond weight="fill" />
+        return <Diamond />
       case 'heart':
-        return <Heart weight="fill" />
+        return <Heart />
       case 'spade':
-        return <Spade weight="fill" />
-      default:
-        return <BeerBottle weight="fill" />
+        return <Spade />
     }
   }, [suit])
 
@@ -57,17 +56,19 @@ const CardFront: FC<CardFrontProps> = ({
       )}
       {...rest}
     >
-      <div className="flex w-full items-center justify-between">
-        <span>{value}</span>
-        <span>{cardSuitIcon}</span>
-      </div>
-      <div className="[&>svg]:h-40 [&>svg]:w-40 [&>svg]:xs:h-32 [&>svg]:xs:w-32">
-        {cardValueIcon || cardSuitIcon}
-      </div>
-      <div className="flex w-full rotate-180 items-center justify-between">
-        <span>{value}</span>
-        <span>{cardSuitIcon}</span>
-      </div>
+      <IconContext.Provider value={{ weight: 'fill', size: '3rem' }}>
+        <div className="flex w-full items-center justify-between">
+          <span>{value}</span>
+          <span>{cardSuitIcon}</span>
+        </div>
+        <div className="[&>svg]:h-40 [&>svg]:w-40 [&>svg]:xs:h-32 [&>svg]:xs:w-32">
+          {cardValueIcon || cardSuitIcon || <BeerBottle />}
+        </div>
+        <div className="flex w-full rotate-180 items-center justify-between">
+          <span>{value}</span>
+          <span>{cardSuitIcon}</span>
+        </div>
+      </IconContext.Provider>
     </div>
   )
 }

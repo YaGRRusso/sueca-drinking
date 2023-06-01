@@ -14,6 +14,7 @@ const HomePage: NextPage = ({}) => {
   const [flipped, setFlipped] = useState<boolean>()
   const [swipeStart, setSwipeStart] = useState<number>()
   const [swipeEnd, setSwipeEnd] = useState<number>()
+  const [swipeDelta, setSwipeDelta] = useState<number>()
 
   const handleGetLastCard = useCallback(() => {
     setCard(getLastDeckCard())
@@ -38,8 +39,9 @@ const HomePage: NextPage = ({}) => {
   const swipeDirection = useMemo(() => {
     if (swipeStart && swipeEnd) {
       const delta = swipeEnd - swipeStart
-      if (delta < -80) return 'left'
-      if (delta > 80) return 'right'
+      setSwipeDelta(delta)
+      if (delta < -50) return 'left'
+      if (delta > 50) return 'right'
     }
   }, [swipeEnd, swipeStart])
 
@@ -49,43 +51,32 @@ const HomePage: NextPage = ({}) => {
     }
     setSwipeStart(undefined)
     setSwipeEnd(undefined)
+    setSwipeDelta(undefined)
   }, [handleGetLastCard, isDeckEmpty, swipeDirection])
 
   return (
     <div className="container-center container flex flex-col gap-4 overflow-x-hidden font-amatic">
-      {/* <Modal.Root>
-        <Modal.Trigger>
-          <Button variant="light" className="font-thin">
-            <span>{tCommon('cards', { count: deck.length })}</span>
-            <Eye weight="thin" size={16} />
-          </Button>
-        </Modal.Trigger>
-        <Modal.Content
-          className="grid grid-cols-[repeat(auto-fit,_minmax(100px,_1fr))] gap-2"
-          title="Deck"
-          icon={<Stack />}
-        >
-          {deck.map((item) => (
-            <Card.Preview key={item.code} suit={item.suit} value={item.value} />
-          ))}
-        </Modal.Content>
-      </Modal.Root> */}
       <span>{tCommon('cards', { count: deck.length })}</span>
-      <Flip
-        className={clsx(
-          'flex aspect-card w-full max-w-sm items-center justify-center',
-          swipeDirection === 'left' && '-translate-x-7 -rotate-1',
-          swipeDirection === 'right' && 'translate-x-7 rotate-1'
-        )}
-        isFlipped={flipped}
-        onClick={() => setFlipped(!flipped)}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleSwipe}
+      <div
+        className="h-full w-full max-w-sm"
+        style={swipeDelta ? { transform: `translate(${swipeDelta}px)` } : {}}
       >
-        <Card.Front value={card?.value} suit={card?.suit} />
-        <Card.Back value={card?.value} />
-      </Flip>
+        <Flip
+          className={clsx(
+            'flex aspect-card w-full max-w-sm items-center justify-center'
+            // swipeDirection === 'left' && '-translate-x-8',
+            // swipeDirection === 'right' && 'translate-x-8'
+          )}
+          isFlipped={flipped}
+          onClick={() => setFlipped(!flipped)}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleSwipe}
+        >
+          <Card.Front value={card?.value} suit={card?.suit} />
+          <Card.Back value={card?.value} />
+        </Flip>
+      </div>
       <div className="mt-4 flex items-center gap-4">
         <Button disabled={flipped} onClick={handleResetDeck} size="sm">
           <ArrowClockwise />
