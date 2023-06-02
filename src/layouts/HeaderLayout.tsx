@@ -1,8 +1,15 @@
 import { Button, ErrorBoundary } from '@/components'
 import { useThemeContext } from '@/contexts/ThemeContext'
-import { GithubLogo, MoonStars, Sun, Translate } from '@phosphor-icons/react'
+import {
+  GithubLogo,
+  MoonStars,
+  Stack,
+  Sun,
+  Translate,
+} from '@phosphor-icons/react'
 import clsx from 'clsx'
 import { NextPage } from 'next'
+import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { HTMLAttributes, useMemo } from 'react'
@@ -11,6 +18,7 @@ export interface HeaderLayoutProps extends HTMLAttributes<HTMLDivElement> {}
 
 const HeaderLayout: NextPage<HeaderLayoutProps> = ({ children }) => {
   const { theme, toggleTheme } = useThemeContext()
+  const { t: tCommon } = useTranslation('common')
   const router = useRouter()
 
   const nextLang = useMemo(() => {
@@ -31,14 +39,10 @@ const HeaderLayout: NextPage<HeaderLayoutProps> = ({ children }) => {
   return (
     <div className={clsx('flex min-h-screen flex-col', currentTheme)}>
       <header className="container flex flex-wrap items-center justify-between gap-6 py-6">
-        <Link
-          href="https://github.com/YaGRRusso/sueca-drinking"
-          target="_blank"
-          className="text-3xl font-semibold"
-        >
-          Sueca
+        <Link href="/" className="text-center text-3xl font-semibold">
+          <h1>Sueca</h1>
         </Link>
-        <div className="flex items-center gap-4 text-xl">
+        <div className="flex items-center gap-4 text-xl xs:gap-2">
           <Button onClick={toggleTheme} variant="light">
             {theme === 'dark' ? <MoonStars /> : <Sun />}
           </Button>
@@ -47,7 +51,17 @@ const HeaderLayout: NextPage<HeaderLayoutProps> = ({ children }) => {
               <Translate />
             </Link>
           </Button>
+          {/* <Button asChild variant="light">
+            <Link href="/rules">
+              <ListDashes />
+            </Link>
+          </Button> */}
           <Button asChild variant="light">
+            <Link href="/deck">
+              <Stack />
+            </Link>
+          </Button>
+          <Button asChild variant="light" className="sm:hidden">
             <Link href="https://github.com/YaGRRusso" target="_blank">
               <GithubLogo />
             </Link>
@@ -57,7 +71,7 @@ const HeaderLayout: NextPage<HeaderLayoutProps> = ({ children }) => {
       <ErrorBoundary>
         <>{children}</>
       </ErrorBoundary>
-      {/* <footer className="container flex items-center justify-center gap-1 pb-4 pt-6 text-sm opacity-40">
+      <footer className="container flex items-center justify-center gap-1 pb-4 pt-6 text-sm opacity-30">
         {tCommon('createdBy')}
         <Link
           href="https://github.com/YaGRRusso"
@@ -66,7 +80,7 @@ const HeaderLayout: NextPage<HeaderLayoutProps> = ({ children }) => {
         >
           Yago Russo
         </Link>
-      </footer> */}
+      </footer>
     </div>
   )
 }
