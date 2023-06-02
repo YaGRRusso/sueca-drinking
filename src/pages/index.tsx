@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import { GetStaticProps, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { TouchEvent, useCallback, useMemo, useState } from 'react'
+import { TouchEvent, useCallback, useEffect, useMemo, useState } from 'react'
 import { toast } from 'react-toastify'
 
 const HomePage: NextPage = ({}) => {
@@ -55,14 +55,24 @@ const HomePage: NextPage = ({}) => {
   }, [swipeDelta])
 
   const handleSwipe = useCallback(() => {
-    if (swipeDirection && !isDeckEmpty) {
-      handleGetLastCard()
-    } else {
-      toast.error(tCommon('emptyDeck'))
+    if (swipeDirection) {
+      if (!isDeckEmpty) {
+        handleGetLastCard()
+      } else {
+        toast.error(tCommon('emptyDeck'))
+      }
     }
     setSwipeStart(undefined)
     setSwipeEnd(undefined)
   }, [handleGetLastCard, isDeckEmpty, swipeDirection, tCommon])
+
+  useEffect(() => {
+    if (swipeDelta) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+  }, [swipeDelta])
 
   return (
     <>
