@@ -12,13 +12,17 @@ const HomePage: NextPage = ({}) => {
   const { deck, getLastDeckCard, resetDeck, isDeckEmpty } = useDeckContext()
   const [card, setCard] = useState<CardProps>()
   const [flipped, setFlipped] = useState<boolean>()
+  const [animating, setAnimating] = useState<boolean>()
   const [swipeStart, setSwipeStart] = useState<number>()
   const [swipeEnd, setSwipeEnd] = useState<number>()
-  const [swipeDelta, setSwipeDelta] = useState<number>()
 
   const handleGetLastCard = useCallback(() => {
     setCard(getLastDeckCard())
     setFlipped(false)
+    setAnimating(true)
+    setTimeout(() => {
+      setAnimating(false)
+    }, 200)
   }, [getLastDeckCard])
 
   const handleResetDeck = useCallback(() => {
@@ -36,14 +40,18 @@ const HomePage: NextPage = ({}) => {
     setSwipeEnd(touch.clientX)
   }, [])
 
-  const swipeDirection = useMemo(() => {
+  const swipeDelta = useMemo(() => {
     if (swipeStart && swipeEnd) {
-      const delta = swipeEnd - swipeStart
-      setSwipeDelta(delta)
-      if (delta < -50) return 'left'
-      if (delta > 50) return 'right'
+      return swipeEnd - swipeStart
     }
   }, [swipeEnd, swipeStart])
+
+  const swipeDirection = useMemo(() => {
+    if (swipeDelta) {
+      if (swipeDelta < -80) return 'left'
+      if (swipeDelta > 80) return 'right'
+    }
+  }, [swipeDelta])
 
   const handleSwipe = useCallback(() => {
     if (swipeDirection && !isDeckEmpty) {
@@ -51,22 +59,17 @@ const HomePage: NextPage = ({}) => {
     }
     setSwipeStart(undefined)
     setSwipeEnd(undefined)
-    setSwipeDelta(undefined)
   }, [handleGetLastCard, isDeckEmpty, swipeDirection])
 
   return (
     <div className="container-center container flex flex-col gap-4 overflow-x-hidden font-amatic">
       <span>{tCommon('cards', { count: deck.length })}</span>
       <div
-        className="h-full w-full max-w-sm"
+        className={clsx('h-full w-full max-w-sm', animating && 'animate-popin')}
         style={swipeDelta ? { transform: `translate(${swipeDelta}px)` } : {}}
       >
         <Flip
-          className={clsx(
-            'flex aspect-card w-full max-w-sm items-center justify-center'
-            // swipeDirection === 'left' && '-translate-x-8',
-            // swipeDirection === 'right' && 'translate-x-8'
-          )}
+          className="flex aspect-card w-full max-w-sm items-center justify-center"
           isFlipped={flipped}
           onClick={() => setFlipped(!flipped)}
           onTouchStart={handleTouchStart}

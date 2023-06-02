@@ -37,9 +37,14 @@ module.exports = {
           from: { transform: 'translate(-50%, -80%) scale(0)' },
           to: { transform: 'translate(-50%, -50%) scale(1)' },
         },
+        popin: {
+          from: { transform: 'scale(2)' },
+          to: { transform: 'scale(1)' },
+        },
       },
       animation: {
         popup: 'popup 300ms ease-out',
+        popin: 'popin 200ms ease-out',
       },
     },
   },
