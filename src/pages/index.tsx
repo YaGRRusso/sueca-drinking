@@ -6,6 +6,7 @@ import { GetStaticProps, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { TouchEvent, useCallback, useMemo, useState } from 'react'
+import { toast } from 'react-toastify'
 
 const HomePage: NextPage = ({}) => {
   const { t: tCommon } = useTranslation('common')
@@ -56,10 +57,12 @@ const HomePage: NextPage = ({}) => {
   const handleSwipe = useCallback(() => {
     if (swipeDirection && !isDeckEmpty) {
       handleGetLastCard()
+    } else {
+      toast.error(tCommon('emptyDeck'))
     }
     setSwipeStart(undefined)
     setSwipeEnd(undefined)
-  }, [handleGetLastCard, isDeckEmpty, swipeDirection])
+  }, [handleGetLastCard, isDeckEmpty, swipeDirection, tCommon])
 
   return (
     <>
