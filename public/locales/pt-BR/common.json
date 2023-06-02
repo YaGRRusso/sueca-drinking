@@ -1,5 +1,7 @@
 {
   "nextCard": "Próxima Carta",
   "cards": "Cartas: {{count}}",
-  "createdBy": "Criado por"
+  "createdBy": "Criado por",
+  "emptyDeck": "Baralho Vazio!",
+  "currentDeck": "Baralho Atual"
 }

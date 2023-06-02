@@ -1,5 +1,7 @@
 {
   "nextCard": "Next Card",
   "cards": "Cards: {{count}}",
-  "createdBy": "Created by"
+  "createdBy": "Created by",
+  "emptyDeck": "Empty Deck!",
+  "currentDeck": "Current Deck"
 }

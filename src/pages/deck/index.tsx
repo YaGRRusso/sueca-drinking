@@ -3,15 +3,17 @@ import { useDeckContext } from '@/contexts/DeckContext'
 import { Stack } from '@phosphor-icons/react'
 import { GetStaticProps, NextPage } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'react-i18next'
 
 const DeckPage: NextPage = ({}) => {
   const { deck } = useDeckContext()
+  const { t: tCommon } = useTranslation('common')
 
   return (
     <>
       <Head title="Sueca - Deck" />
       <div className="container-center container flex flex-col gap-12 overflow-x-hidden font-amatic">
-        <h2 className="text-5xl">Baralho Atual</h2>
+        <h2 className="text-5xl">{tCommon('currentDeck')}</h2>
         <div className="flex items-center gap-2 text-3xl font-bold">
           <Stack />
           <span>{deck.length}</span>
