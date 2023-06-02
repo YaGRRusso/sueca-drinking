@@ -38,6 +38,7 @@
     "scope": "typescriptreact",
     "prefix": "nextpage",
     "body": [
+      "import { Head } from '@/components'",
       "import { GetStaticProps, NextPage } from 'next'",
       "import { serverSideTranslations } from 'next-i18next/serverSideTranslations'",
       "",

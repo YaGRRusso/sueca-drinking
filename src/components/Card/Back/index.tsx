@@ -39,7 +39,7 @@ const CardBack: FC<CardBackProps> = ({
         <Modal.Root>
           <Modal.Trigger>
             <div
-              className="absolute right-4 top-4 rounded-full p-4 transition-colors hover:bg-sky-600"
+              className="absolute right-4 top-4 rounded-full p-4 transition-colors hover:bg-sky-600 xs:right-2 xs:top-2 xs:p-4"
               role="button"
               onClick={(ev) => ev.stopPropagation()}
             >

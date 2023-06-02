@@ -6,6 +6,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react'
@@ -24,7 +25,7 @@ export const DeckContext = createContext<DeckContextProps>(
 )
 
 export const DeckProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [deck, setDeck] = useState<CardProps[]>(shuffle(cards))
+  const [deck, setDeck] = useState<CardProps[]>([])
 
   const resetDeck = useCallback(() => {
     setDeck(shuffle(cards))
@@ -50,6 +51,10 @@ export const DeckProvider: FC<{ children: ReactNode }> = ({ children }) => {
   }, [deck])
 
   const isDeckEmpty = useMemo(() => (deck.length <= 0 ? true : false), [deck])
+
+  useEffect(() => {
+    resetDeck()
+  }, [resetDeck])
 
   return (
     <DeckContext.Provider

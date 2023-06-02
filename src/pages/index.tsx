@@ -1,4 +1,4 @@
-import { Button, Card, Flip } from '@/components'
+import { Button, Card, Flip, Head } from '@/components'
 import { useDeckContext } from '@/contexts/DeckContext'
 import { ArrowClockwise, CaretRight } from '@phosphor-icons/react'
 import clsx from 'clsx'
@@ -62,34 +62,40 @@ const HomePage: NextPage = ({}) => {
   }, [handleGetLastCard, isDeckEmpty, swipeDirection])
 
   return (
-    <div className="container-center container flex flex-col gap-4 overflow-x-hidden font-amatic">
-      <span>{tCommon('cards', { count: deck.length })}</span>
-      <div
-        className={clsx('h-full w-full max-w-sm', animating && 'animate-popin')}
-        style={swipeDelta ? { transform: `translate(${swipeDelta}px)` } : {}}
-      >
-        <Flip
-          className="flex aspect-card w-full max-w-sm items-center justify-center"
-          isFlipped={flipped}
-          onClick={() => setFlipped(!flipped)}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleSwipe}
+    <>
+      <Head title="Sueca - Play" />
+      <div className="container-center container flex flex-col gap-4 overflow-hidden font-amatic">
+        <span>{tCommon('cards', { count: deck.length })}</span>
+        <div
+          className={clsx(
+            'h-full w-full max-w-sm',
+            animating && 'animate-popin'
+          )}
+          style={swipeDelta ? { transform: `translate(${swipeDelta}px)` } : {}}
         >
-          <Card.Front value={card?.value} suit={card?.suit} />
-          <Card.Back value={card?.value} />
-        </Flip>
+          <Flip
+            className="flex aspect-card w-full max-w-sm items-center justify-center"
+            isFlipped={flipped}
+            onClick={() => setFlipped(!flipped)}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleSwipe}
+          >
+            <Card.Front value={card?.value} suit={card?.suit} />
+            <Card.Back value={card?.value} />
+          </Flip>
+        </div>
+        <div className="mt-4 flex items-center gap-4">
+          <Button disabled={flipped} onClick={handleResetDeck} size="sm">
+            <ArrowClockwise />
+          </Button>
+          <Button disabled={flipped || isDeckEmpty} onClick={handleGetLastCard}>
+            {tCommon('nextCard')}
+            <CaretRight />
+          </Button>
+        </div>
       </div>
-      <div className="mt-4 flex items-center gap-4">
-        <Button disabled={flipped} onClick={handleResetDeck} size="sm">
-          <ArrowClockwise />
-        </Button>
-        <Button disabled={flipped || isDeckEmpty} onClick={handleGetLastCard}>
-          {tCommon('nextCard')}
-          <CaretRight />
-        </Button>
-      </div>
-    </div>
+    </>
   )
 }
 

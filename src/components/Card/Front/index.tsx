@@ -51,7 +51,7 @@ const CardFront: FC<CardFrontProps> = ({
   return (
     <div
       className={clsx(
-        'flex aspect-card h-full w-full flex-col items-center justify-between gap-4 rounded-3xl border-2 bg-rose-500 p-8 text-5xl font-bold text-white dark:bg-rose-700',
+        'flex aspect-card h-full w-full flex-col items-center justify-between gap-4 rounded-3xl border-2 bg-rose-500 p-8 text-5xl font-bold text-white dark:bg-rose-700 xs:p-6',
         className
       )}
       {...rest}
