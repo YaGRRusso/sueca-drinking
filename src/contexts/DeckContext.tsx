@@ -1,5 +1,6 @@
 import { randomNumber, shuffle } from '@/helpers/arrayHelper'
-import { cards } from '@/mock/cards'
+import { getDeck } from '@/services/deck'
+// import { cards } from '@/mock/cards'
 import {
   FC,
   ReactNode,
@@ -27,7 +28,8 @@ export const DeckContext = createContext<DeckContextProps>(
 export const DeckProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [deck, setDeck] = useState<CardProps[]>([])
 
-  const resetDeck = useCallback(() => {
+  const resetDeck = useCallback(async () => {
+    const { deck: cards } = await getDeck()
     setDeck(shuffle(cards))
   }, [])
 
