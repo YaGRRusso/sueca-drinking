@@ -11,7 +11,10 @@ const DeckPage: NextPage = ({}) => {
 
   return (
     <>
-      <Head title="Sueca - Deck" />
+      <Head
+        title="Sueca - Deck"
+        description={tCommon('gameDescription') || ''}
+      />
       <div className="container-center container flex flex-col gap-12 overflow-x-hidden font-amatic">
         <h2 className="text-5xl">{tCommon('currentDeck')}</h2>
         <div className="flex items-center gap-2 text-3xl font-bold">

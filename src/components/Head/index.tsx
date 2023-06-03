@@ -6,7 +6,11 @@ export interface HeadProps {
   tags?: string[]
 }
 
-const HeadLayout = ({ title, description, tags }: HeadProps) => {
+const HeadLayout = ({
+  title,
+  description,
+  tags = ['sueca', 'drink'],
+}: HeadProps) => {
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
