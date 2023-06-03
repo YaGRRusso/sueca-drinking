@@ -5,7 +5,14 @@ import clsx from 'clsx'
 import { GetStaticProps, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { TouchEvent, useCallback, useEffect, useMemo, useState } from 'react'
+import {
+  MouseEvent,
+  TouchEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 import { toast } from 'react-toastify'
 
 const HomePage: NextPage = ({}) => {
@@ -19,11 +26,11 @@ const HomePage: NextPage = ({}) => {
 
   const handleGetLastCard = useCallback(() => {
     setCard(getLastDeckCard())
-    setFlipped(false)
     setAnimating(true)
     setTimeout(() => {
       setAnimating(false)
     }, 200)
+    setFlipped(false)
   }, [getLastDeckCard])
 
   const handleResetDeck = useCallback(() => {
@@ -39,6 +46,14 @@ const HomePage: NextPage = ({}) => {
   const handleTouchMove = useCallback((ev: TouchEvent<HTMLButtonElement>) => {
     const touch = ev.touches[0]
     setSwipeEnd(touch.clientX)
+  }, [])
+
+  const handleMouseStart = useCallback((ev: MouseEvent<HTMLButtonElement>) => {
+    setSwipeStart(ev.clientX)
+  }, [])
+
+  const handleMouseMove = useCallback((ev: MouseEvent<HTMLButtonElement>) => {
+    setSwipeEnd(ev.clientX)
   }, [])
 
   const swipeDelta = useMemo(() => {
@@ -89,10 +104,14 @@ const HomePage: NextPage = ({}) => {
           <Flip
             className="flex aspect-card w-full max-w-sm items-center justify-center"
             isFlipped={flipped}
-            onClick={() => setFlipped(!flipped)}
+            onClick={() => !animating && setFlipped(!flipped)}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
+            onMouseDown={handleMouseStart}
+            onMouseMove={handleMouseMove}
             onTouchEnd={handleSwipe}
+            onMouseUp={handleSwipe}
+            onMouseLeave={handleSwipe}
           >
             <Card.Front value={card?.value} suit={card?.suit} />
             <Card.Back value={card?.value} />
