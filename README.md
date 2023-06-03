@@ -15,15 +15,11 @@ Documentação de todas as tecnologias utilizadas no projeto para consulta
 
 - [Tailwind (v3)](https://stitches.dev/docs/introduction)
 
-- [React Query (v3)](https://react-query-v3.tanstack.com/overview)
+- [CLSX (v1)](https://github.com/lukeed/clsx#readme)
+
+- [React Query (v4)](https://react-query-v4.tanstack.com/overview)
 
 - [Next-i18Next (v13)](https://github.com/i18next/next-i18next)
-
-- [React Hook Form (v7)](https://react-hook-form.com/get-started)
-
-- [Zod (v3)](https://zod.dev/?id=introduction)
-
-- [IMask (v6)](https://imask.js.org/guide.html#getting-started)
 
 ## 🚀 Recursos
 
@@ -35,7 +31,8 @@ Recursos presentes no template para próximos projetos
 - [x] Hooks e Contextos
 - [x] Error Boundary
 - [x] React Query
-- [x] Hooks, Schemas e Máscaras de Formulários
+- [x] Persistência de Requisições
+- [x] API NextJS
 
 ## ⚙️ Instalando o Projeto
 
