@@ -2,8 +2,8 @@ import { Card, Head } from '@/components'
 import { useDeckContext } from '@/contexts/DeckContext'
 import { Stack } from '@phosphor-icons/react'
 import { GetStaticProps, NextPage } from 'next'
+import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useTranslation } from 'react-i18next'
 
 const DeckPage: NextPage = ({}) => {
   const { deck } = useDeckContext()

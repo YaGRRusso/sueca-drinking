@@ -1,5 +1,6 @@
 import { randomNumber, shuffle } from '@/helpers/arrayHelper'
-import { getDeck } from '@/services/deck'
+import { GetDeckProps, getDeck } from '@/services/deck'
+import { useQuery } from '@tanstack/react-query'
 // import { cards } from '@/mock/cards'
 import {
   FC,
@@ -27,11 +28,14 @@ export const DeckContext = createContext<DeckContextProps>(
 
 export const DeckProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [deck, setDeck] = useState<CardProps[]>([])
+  const { data } = useQuery<GetDeckProps>({
+    queryKey: ['deck'],
+    queryFn: getDeck,
+  })
 
   const resetDeck = useCallback(async () => {
-    const { deck: cards } = await getDeck()
-    setDeck(shuffle(cards))
-  }, [])
+    setDeck(shuffle(data?.deck || []))
+  }, [data])
 
   const shuffleDeck = useCallback(() => {
     setDeck((oldDeck) => shuffle(oldDeck))

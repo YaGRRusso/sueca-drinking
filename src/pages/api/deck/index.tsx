@@ -6,7 +6,7 @@ const getDeck: NextApiHandler = async (req, res) => {
 }
 
 const handler: NextApiHandler = async (req, res) => {
-  await new Promise((resolve) => setTimeout(resolve, 50))
+  await new Promise((resolve) => setTimeout(resolve, 500))
 
   switch (req.method) {
     case 'GET':

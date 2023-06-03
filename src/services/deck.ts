@@ -1,6 +1,6 @@
 const BASEURL = '/api'
 
-type GetDeckProps = {
+export type GetDeckProps = {
   deck: CardProps[]
 }
 

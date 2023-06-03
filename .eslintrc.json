@@ -1,9 +1,11 @@
 {
+  "plugins": ["unused-imports", "@tanstack/query"],
   "extends": ["next/core-web-vitals", "prettier"],
-  "plugins": ["unused-imports"],
   "rules": {
     "quotes": ["error", "single"],
     "semi": ["error", "never"],
-    "unused-imports/no-unused-imports": "error"
+    "unused-imports/no-unused-imports": "error",
+    "@tanstack/query/exhaustive-deps": "error",
+    "@tanstack/query/prefer-query-object-syntax": "error"
   }
 }
