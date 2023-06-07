@@ -1,11 +1,16 @@
 {
+  "gameDescription": "Sueca is an easy and ideal card game to have fun with a group of friends. Plus, it's simple, meaning anyone can learn it, and it only requires a deck of cards (and drinks).",
+
   "nextCard": "Next Card",
   "cards": "Cards: {{count}}",
-  "createdBy": "Created by",
   "emptyDeck": "Empty Deck!",
+  "featUnderDevelopment": "Feature Under Development!",
   "currentDeck": "Current Deck",
-  "gameDescription": "Sueca is an easy and ideal card game to have fun with a group of friends. Plus, it's simple, meaning anyone can learn it, and it only requires a deck of cards (and drinks).",
+  "deckRules": "Deck Rules",
+  "deckRulesInfo": "Click the rule title to see the description",
+
   "deck": "Deck",
   "rules": "Rules",
-  "settings": "Settings"
+  "settings": "Settings",
+  "createdBy": "Created by"
 }

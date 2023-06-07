@@ -14,7 +14,7 @@ const CardBack: FC<CardBackProps> = ({
   className,
   ...rest
 }) => {
-  const { t: tRules } = useTranslation('sueca')
+  const { t: tRules } = useTranslation('rules')
 
   const cardRule = useMemo(() => {
     if (value) {

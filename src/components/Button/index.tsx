@@ -9,7 +9,7 @@ const sizeVariants = {
 
 const variantVariants = {
   default:
-    'bg-gray-200 hover:bg-gray-300 dark:bg-slate-800 dark:hover:bg-slate-700 py-2 h-12',
+    'bg-slate-300 bg-opacity-20 bg-clip-padding shadow-sm backdrop-blur-md backdrop-filter dark:bg-slate-800 dark:bg-opacity-30 py-2 h-12',
   light: 'rounded-lg p-2 hover:dark:bg-slate-800 hover:bg-slate-200 ',
 }
 

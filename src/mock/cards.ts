@@ -62,6 +62,22 @@ const spadeCardCodes: CardSpadeCodeProps[] = [
   'sk',
 ]
 
+export const cardValuesEnum = [
+  { value: 1, label: 'A' },
+  { value: 2, label: '2' },
+  { value: 3, label: '3' },
+  { value: 4, label: '4' },
+  { value: 5, label: '5' },
+  { value: 6, label: '6' },
+  { value: 7, label: '7' },
+  { value: 8, label: '8' },
+  { value: 9, label: '9' },
+  { value: 10, label: '10' },
+  { value: 11, label: 'J' },
+  { value: 12, label: 'Q' },
+  { value: 13, label: 'K' },
+]
+
 export const cards: CardProps[] = [
   ...clubCardCodes.map((item, index) => ({
     code: item,

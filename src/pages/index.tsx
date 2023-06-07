@@ -91,10 +91,7 @@ const HomePage: NextPage = ({}) => {
 
   return (
     <>
-      <Head
-        title="Sueca - Play"
-        description={tCommon('gameDescription') || ''}
-      />
+      <Head title="Sueca - Play" />
       <div className="container-center container flex flex-col gap-4 overflow-hidden font-amatic">
         <span>{tCommon('cards', { count: deck.length })}</span>
         <div
@@ -139,7 +136,7 @@ export default HomePage
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale as string, ['common', 'sueca'])),
+      ...(await serverSideTranslations(locale as string, ['common', 'rules'])),
     },
   }
 }

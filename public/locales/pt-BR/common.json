@@ -1,11 +1,16 @@
 {
+  "gameDescription": "A Sueca é um jogo de cartas fácil e ideal para se divertir com um grupo de amigos. Além disso, é simples, ou seja, qualquer um pode aprender e requer apenas um baralho (e bebidas).",
+
   "nextCard": "Próxima Carta",
   "cards": "Cartas: {{count}}",
-  "createdBy": "Criado por",
   "emptyDeck": "Baralho Vazio!",
+  "featUnderDevelopment": "Funcionalidade em Desenvolvimento!",
   "currentDeck": "Baralho Atual",
-  "gameDescription": "A Sueca é um jogo de cartas fácil e ideal para se divertir com um grupo de amigos. Além disso, é simples, ou seja, qualquer um pode aprender e requer apenas um baralho (e bebidas).",
+  "deckRules": "Regras do Baralho",
+  "deckRulesInfo": "Clique no título da regra para ver a descrição",
+
   "deck": "Baralho",
   "rules": "Regras",
-  "settings": "Ajustes"
+  "settings": "Ajustes",
+  "createdBy": "Criado por"
 }
