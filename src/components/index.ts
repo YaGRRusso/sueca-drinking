@@ -1,6 +1,9 @@
 export { default as ErrorBoundary } from './ErrorBoundary'
 export { default as Head } from './Head'
 
+export type * from './Layout'
+export { default as Layout } from './Layout'
+
 export type * from './Flip'
 export { default as Flip } from './Flip'
 
