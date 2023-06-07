@@ -10,7 +10,7 @@ const sizeVariants = {
 const variantVariants = {
   default:
     'bg-gray-200 hover:bg-gray-300 dark:bg-slate-800 dark:hover:bg-slate-700 py-2 h-12',
-  light: 'rounded-lg p-2 hover:shadow',
+  light: 'rounded-lg p-2 hover:dark:bg-slate-800 hover:bg-slate-200 ',
 }
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

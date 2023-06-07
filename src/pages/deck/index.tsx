@@ -1,7 +1,7 @@
 import { Card, Head } from '@/components'
 import { useDeckContext } from '@/contexts/DeckContext'
 import { Stack } from '@phosphor-icons/react'
-import { GetStaticProps, NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -33,7 +33,7 @@ const DeckPage: NextPage = ({}) => {
 
 export default DeckPage
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   return {
     props: {
       ...(await serverSideTranslations(locale as string, ['common', 'sueca'])),

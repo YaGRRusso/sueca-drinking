@@ -2,7 +2,7 @@ import { Button, Card, Flip, Head } from '@/components'
 import { useDeckContext } from '@/contexts/DeckContext'
 import { ArrowClockwise, CaretRight } from '@phosphor-icons/react'
 import clsx from 'clsx'
-import { GetStaticProps, NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import {
@@ -136,7 +136,7 @@ const HomePage: NextPage = ({}) => {
 
 export default HomePage
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   return {
     props: {
       ...(await serverSideTranslations(locale as string, ['common', 'sueca'])),

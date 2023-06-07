@@ -1,7 +1,6 @@
 import { randomNumber, shuffle } from '@/helpers/arrayHelper'
 import { GetDeckProps, getDeck } from '@/services/deck'
 import { useQuery } from '@tanstack/react-query'
-// import { cards } from '@/mock/cards'
 import {
   FC,
   ReactNode,

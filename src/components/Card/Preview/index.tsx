@@ -32,7 +32,7 @@ const CardPreview: FC<CardPreviewProps> = ({
   return (
     <div
       className={clsx(
-        'flex aspect-card flex-col items-center justify-center gap-2 rounded-lg border bg-rose-500 p-2 text-xl font-bold dark:bg-rose-700',
+        'flex aspect-card flex-col items-center justify-center gap-2 rounded-lg border bg-rose-500 p-2 text-xl font-bold text-white dark:bg-rose-700',
         className
       )}
       {...rest}
